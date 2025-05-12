@@ -2,3 +2,6 @@
 edit = [
 {run = 'nvim "$@"', block = true, for = "unix"}
 ]
+open = [
+{run = 'xdg-open "$1"', desc = "Open", blocking = false, orphan = true, for = 'linux'}
+]
