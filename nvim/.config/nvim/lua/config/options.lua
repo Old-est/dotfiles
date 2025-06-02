@@ -1,4 +1,4 @@
-vim.cmd[[colorscheme tokyonight-storm]]
+vim.cmd [[colorscheme tokyonight-storm]]
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -21,7 +21,14 @@ vim.opt.foldlevel = 99
 vim.opt.smoothscroll = true
 
 vim.filetype.add({
-	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+    pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+})
+
+
+vim.filetype.add({
+    extension = {
+        serenity = "toml"
+    },
 })
 
 vim.keymap.set({ "n", "x" }, "s", "<Nop>")

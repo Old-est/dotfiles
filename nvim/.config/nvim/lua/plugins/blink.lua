@@ -38,7 +38,7 @@ return {
                 list = {
                     selection = { preselect = false, auto_insert = false },
                 },
-                trigger = { show_in_snippet = false },
+                trigger = { show_in_snippet = true },
                 ghost_text = { enabled = true },
             },
             keymap = {
@@ -123,5 +123,6 @@ return {
 
             signature = { enabled = true, window = { border = "rounded" } },
         },
+        opts_extend = { "sources.default" }
     },
 }
