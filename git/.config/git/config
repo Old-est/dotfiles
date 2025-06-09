@@ -1,0 +1,49 @@
+[core]
+    compression = 9
+    whitespace = error
+    preloadindex = true
+
+[push]
+    autoSetupRempte = true
+    default = current
+    followTags = true
+
+[pull]
+    default = current
+    rebase = true
+
+[rebase]
+    autoStash = true
+    missingCommitsCheck = warn
+
+[log]
+    abbrevCommit = true
+    graphColors = blue,yellow,cyan.magents,green,red
+
+[color "decorate"]
+    HEAD = red
+    branch = blue
+    tag = yellow
+    remoteBranch = magenta
+
+[color "branch"]
+    current = magenta
+    local = default
+    remote = green
+    upstream = green
+    plain = blue
+
+[branch]
+    sort = -committerdate
+
+[tag]
+    sort = -taggerdate
+
+[pager]
+    branch = false
+    tag = false
+
+[status]
+    branch = true
+    showStash = true
+    showUntrackedFiles = all
