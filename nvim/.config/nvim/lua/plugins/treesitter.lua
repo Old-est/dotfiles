@@ -26,6 +26,7 @@ return {
 			"ssh_config",
 			"yaml",
             "glsl",
+            "regex",
 		},
 		highlight = {
 			enable = true,
