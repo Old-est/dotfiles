@@ -11,4 +11,4 @@ alias ls="eza --icons"
 starship init fish | source
 zoxide init fish | source
 eval (tmuxifier init - fish)
-
+batman --export-env | source

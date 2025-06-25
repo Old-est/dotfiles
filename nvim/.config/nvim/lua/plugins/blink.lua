@@ -1,12 +1,23 @@
 return {
+    {
 
+        "L3MON4D3/LuaSnip",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp",
+        config = function ()
+            require('luasnip.loaders.from_vscode').lazy_load()
+        end
+    },
     {
         "saghen/blink.cmp",
         -- lazy = false, -- lazy loading handled internally
         event = "VeryLazy",
         -- optional: provides snippets for the snippet source
         version = "1.*",
-        dependencies = { "rafamadriz/friendly-snippets", },
+        dependencies = {},
         -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
         -- build = 'cargo build --release',
         -- On musl libc based systems you need to add this flag
@@ -14,6 +25,7 @@ return {
         opts = {
             -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
             -- adjusts spacing to ensure icons are aligned
+            snippets = { preset = 'luasnip' },
             completion = {
                 menu = {
                     winblend = vim.o.pumblend,
@@ -22,6 +34,16 @@ return {
                             { "label",     "label_description", gap = 1 },
                             { "kind_icon", "kind" },
                         },
+                        components = {
+                            label = {
+                                text = function(ctx)
+                                    return require("colorful-menu").blink_components_text(ctx)
+                                end,
+                                highlight = function(ctx)
+                                    return require("colorful-menu").blink_components_highlight(ctx)
+                                end,
+                            },
+                        }
                     },
                     border = "rounded"
                 },
@@ -99,6 +121,7 @@ return {
                     "sort_text",
                 },
             },
+
 
             sources = {
                 default = { "lazydev", "beancount", "lsp", "path", "snippets", "buffer" },

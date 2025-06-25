@@ -2,7 +2,7 @@
 return {
     cmd = { "clangd",  "--header-insertion=never",
         "--fallback-style=llvm",
-        "--inlay-hints"},
-    filetypes = { "cpp", "h", "hpp", "cc", "c" },
+        "--experimental-modules-support"},
+    filetypes = { "cpp", "h", "hpp", "cc", "c", "cppm" },
     root_markers = { '.git', ".clangd", "compile-commands.json" },
 }
