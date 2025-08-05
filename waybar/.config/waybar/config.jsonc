@@ -9,73 +9,84 @@
     "modules-left": [
         "hyprland/workspaces"
     ],
-    "modules-center": [
-    ],
+    "modules-center": [],
     "modules-right": [
         "tray",
         "pulseaudio",
         "backlight",
         "battery",
-        "hyprland/language",
+        "custom/lang",
         "clock"
     ],
-
     "hyprland/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+        },
+        "on-click": "activate"
     },
-    "on-click": "activate"
-  },
-
     "tray": {
-		"icon-size": 22,
-		"spacing": 15
+        "icon-size": 22,
+        "spacing": 15
     },
-
-        "pulseaudio": {
-		"scroll-step": 5,
-		"format": "{icon} {volume}%",
-		"format-icons": {
-			"default": [" ", " ", " "]
-		},
-		"on-click": "pavucontrol"
-	},
-
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{icon} {volume}%",
+        "format-icons": {
+            "default": [
+                " ",
+                " ",
+                " "
+            ]
+        },
+        "on-click": "pavucontrol"
+    },
     "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon}  {percent}%",
-    "format-icons": ["", ""]
-},
-
-    "hyprland/language": {
-		"format": "{}",
-		"format-en": "EN",
-		"format-ru": "RU",
-	},
-
-"clock": {
-		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-		"format-alt": "{:%Y-%m-%d}"
-	},
-
-"battery": {
-    "bat": "BAT0",
-    "interval": 60,
-    "states": {
-        "warning": 30,
-        "critical": 15
+        "device": "intel_backlight",
+        "format": "{icon}  {percent}%",
+        "format-icons": [
+            "",
+            ""
+        ]
     },
-    "format": "{icon}  {capacity}%",
-    "format-icons": ["", "", "", "", ""],
-    "max-length": 25
-},
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "EN",
+        "format-russian": "RU",
+        "keyboard-name": "ite-tech.-inc.-ite-device(8258)-keyboard"
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "battery": {
+        "bat": "BAT1",
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "max-length": 25
+    },
+    "custom/lang": {
+        "format": "{}",
+        "exec": "~/.config/waybar/scripts/lang.sh",
+        "return-type": "json",
+    },
 }

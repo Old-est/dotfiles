@@ -70,6 +70,7 @@ button:hover {
 #tray,
 #mode,
 #language,
+#custom-lang,
 #scratchpad {
     margin: 2px;
     padding-left: 4px;
@@ -135,4 +136,20 @@ button:hover {
     border-radius: 15px;
     padding-left: 6px;
     padding-right: 6px;
+}
+
+#custom-lang {
+color: @lavender;
+border-bottom: 2px solid @lavender;
+
+}
+
+#custom-lang.ru {
+color: @lavender;
+border-bottom: 2px solid @lavender;
+}
+
+#custom-lang.en {
+color: @lavender;
+border-bottom: 2px solid @lavender;
 }

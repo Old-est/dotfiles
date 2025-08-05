@@ -19,6 +19,7 @@ vim.wo.foldmethod = "expr"
 vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
 vim.opt.smoothscroll = true
+-- vim.o.winborder = 'rounded'
 
 vim.filetype.add({
     pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
@@ -34,6 +35,7 @@ vim.filetype.add({
 vim.keymap.set({ "n", "x" }, "s", "<Nop>")
 
 vim.g.python3_host_prog = vim.fn.expand("~/.venvs/nvim/bin/python")
+vim.g.doxygen_enhanced_colour = 1
 
 -- vim.g.python3_host_prog = "/home/oldest/Stuff/nvim-stuff/bin/python3"
 -- local existing = vim.env.PYTHONPATH or ""

@@ -18,7 +18,7 @@
 
 [log]
     abbrevCommit = true
-    graphColors = blue,yellow,cyan.magents,green,red
+    graphColors = blue,yellow,cyan,magenta,green,red
 
 [color "decorate"]
     HEAD = red
