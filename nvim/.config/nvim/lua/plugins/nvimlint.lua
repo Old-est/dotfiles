@@ -5,7 +5,6 @@ return {
 		linters_by_ft = {
 			-- beancount = { "bean-check" },
             python = {"ruff", "mypy"},
-            cmake = {"cmakelint"},
 		},
 	},
 
