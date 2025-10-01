@@ -11,6 +11,7 @@ return {
 		"--limit-results=50",
 		"--enable-config",
 		"--experimental-modules-support",
+        "--clang-tidy"
 	},
 	filetypes = { "cpp", "h", "hpp", "cc", "c", "cppm" },
 	root_markers = { ".git", ".clangd", "compile-commands.json" },

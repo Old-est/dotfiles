@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# vi: ft=sh
+
+# Проверяем, что путь передан
+if [ -z "$1" ]; then
+  echo "Usage: $0 <path>"
+  exit 1
+fi
+
+TARGET_PATH="$1"
+
+# Проверяем, есть ли сегмент 'cpp' в пути
+if echo "$TARGET_PATH" | grep -q "/cpp/" || echo "$TARGET_PATH" | grep -q "/shape_reward"; then
+  
+  # Запускаем скрипт для C++ (путь можно заменить на реальный)
+  ~/.config/sesh/scripts/cpp_template
+fi
+

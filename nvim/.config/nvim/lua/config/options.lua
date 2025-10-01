@@ -1,4 +1,4 @@
-vim.cmd [[colorscheme tokyonight-storm]]
+vim.cmd([[colorscheme tokyonight-storm]])
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -6,10 +6,14 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 vim.opt.scrolloff = 8
 vim.opt.swapfile = false
+
+-- search settings
+vim.opt.ignorecase = true -- ignore case when searching
+vim.opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 
 vim.opt.termguicolors = true
 
@@ -22,17 +26,17 @@ vim.opt.smoothscroll = true
 -- vim.o.winborder = 'rounded'
 
 vim.filetype.add({
-    pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
-
 
 vim.filetype.add({
-    extension = {
-        serenity = "toml"
-    },
+	extension = {
+		serenity = "toml",
+	},
 })
 
-vim.keymap.set({ "n", "x" }, "s", "<Nop>")
+vim.keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+-- vim.keymap.set({ "n", "x" }, "s", "<Nop>")
 
 vim.g.python3_host_prog = vim.fn.expand("~/.venvs/nvim/bin/python")
 vim.g.doxygen_enhanced_colour = 1

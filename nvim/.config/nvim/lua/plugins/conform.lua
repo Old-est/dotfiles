@@ -1,5 +1,7 @@
 return {
 	"stevearc/conform.nvim",
+	event = { "BufWritePre" },
+	cmd = { "ConformInfo" },
 	keys = {
 		{
 			"<leader>cf",
@@ -13,12 +15,12 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			python = { "ruff_format", "ruff_organize_imports", lsp_format = "fallback" },
-            json = {"prettier"},
-            yaml = {"prettier"},
-            markdown = {"prettier"},
-            cmake = {"cmake_format"},
-            sh = {"shfmt"},
-            beancount = {"bean-format"}
+			json = { "prettier" },
+			yaml = { "prettier" },
+			markdown = { "prettier" },
+			cmake = { "cmake_format" },
+			sh = { "shfmt" },
+			beancount = { "bean-format" },
 		},
 	},
 }

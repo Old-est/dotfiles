@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+tmux rename-window "Assets"
+tmux send-keys "nvim" C-m
+tmux new-window -n "Server" "fava ./main.beancount"
+tmux new-window -n "Git" "lazygit"
+tmux select-window -t "Assets"
