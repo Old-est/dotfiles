@@ -36,6 +36,7 @@ vim.filetype.add({
 })
 
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 -- vim.keymap.set({ "n", "x" }, "s", "<Nop>")
 
 vim.g.python3_host_prog = vim.fn.expand("~/.venvs/nvim/bin/python")

@@ -18,6 +18,9 @@ return {
 		bigfile = {
 			enabled = true,
 		},
+        image = {
+            enabled = false,
+        }
 	},
 	keys = {
 		{

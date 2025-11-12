@@ -1,0 +1,5 @@
+*
+!.gitignore
+!config.org
+!early-init.el
+!init.el

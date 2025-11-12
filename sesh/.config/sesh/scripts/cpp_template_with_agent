@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+tmux rename-window "Code"
+tmux send-keys "nvim" C-m
+tmux new-window -n "Opencode" "opencode"
+tmux new-window -n "Build"
+tmux new-window -n "Git" "export PRE_COMMIT_COLOR=always && lazygit"
+tmux select-window -t "Code"

@@ -1,0 +1,50 @@
+# ~/.config/swaylock/config
+
+# Фон — текущие обои (размытие)
+image=/home/oldest/.config/wallpapers/melatonin.png
+effect-blur=15x7
+effect-vignette=0.5:0.5
+
+# Цвета элементов
+inside-color=00000088
+ring-color=ffffff44
+line-color=00000000
+separator-color=00000000
+
+# Успех
+inside-clear-color=00000088
+ring-clear-color=33bbffcc
+
+# Проверка
+inside-ver-color=00000088
+ring-ver-color=33bbffcc
+
+# Ошибка
+inside-wrong-color=550000aa
+ring-wrong-color=ff3333cc
+
+# Подсветка
+key-hl-color=33bbffcc
+bs-hl-color=ff3333cc
+
+# Текст
+text-color=ffffffff
+text-clear-color=ffffffff
+text-ver-color=ffffffff
+text-wrong-color=ffffffff
+
+# Индикация
+indicator-radius=120
+indicator-thickness=12
+
+# Часы
+clock
+timestr=%H:%M
+datestr=%A, %d %B
+
+# Прочее
+show-failed-attempts
+hide-cursor
+grace=2
+fade-in=0.3
+

@@ -1,10 +1,10 @@
 git:
   autoFetch: false
   overrideGpg: true
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --true-color=always --diff-so-fancy
-    useExternalDiffGitConfig: true
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --true-color=always
+      useExternalDiffGitConfig: true
 customCommands:
   - key: "C"
     command: |

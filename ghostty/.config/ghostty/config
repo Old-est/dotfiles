@@ -1,0 +1,6 @@
+shell-integration = fish
+theme = TokyoNight Storm
+confirm-close-surface=false
+font-family = "JetBrainsMono Nerd Font"
+quit-after-last-window-closed = false
+

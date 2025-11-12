@@ -3,6 +3,9 @@ return {
     cmd = { "beancount-language-server", "--stdio" },
     filetypes = { "beancount" },
     init_options = {
-        journal_file = "~/Documents/finance/main.beancount"
+        journal_file = "~/Documents/finance/main.beancount",
+        formatting = {
+            currency_column = 60
+        }
     }
 }
