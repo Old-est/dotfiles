@@ -1,7 +1,41 @@
 #+TITLE: Oldest's GNU Emacs Config
 #+AUTHOR: Dmitrii Tupitsyn (Oldest)
 #+DESCRIPTION: Oldest personal config (try to use Emacs)
-#+OPTIONS: toc:2
+#+STARTUP: fold
+
+* Table of Contents :TOC_3:
+- [[#package-manager-elpaca][Package Manager (Elpaca)]]
+- [[#settings][Settings]]
+  - [[#core-settings][Core Settings]]
+  - [[#emacs-settings][Emacs Settings]]
+  - [[#treesitter][Treesitter]]
+  - [[#fonts][Fonts]]
+- [[#modules][Modules]]
+  - [[#evil][Evil]]
+  - [[#org][Org]]
+    - [[#org-modern][Org-modern]]
+    - [[#toc-org][Toc-Org]]
+  - [[#git][Git]]
+  - [[#ui][UI]]
+    - [[#nerd-icons][Nerd Icons]]
+    - [[#theme][Theme]]
+    - [[#modeline][Modeline]]
+    - [[#which-key][Which-Key]]
+    - [[#git-1][Git]]
+  - [[#completions][Completions]]
+    - [[#vertico][Vertico]]
+    - [[#corfu][Corfu]]
+  - [[#lang][Lang]]
+    - [[#linting][Linting]]
+    - [[#lsp][Lsp]]
+    - [[#eldoc][Eldoc]]
+    - [[#devdocs][Devdocs]]
+    - [[#rust][Rust]]
+    - [[#beancount][Beancount]]
+    - [[#c][C++]]
+    - [[#cmake][Cmake]]
+    - [[#markdown][Markdown]]
+    - [[#python][Python]]
 
 * Package Manager (Elpaca)
 
@@ -183,6 +217,7 @@
     (major-mode-remap-alist '(
   			                (c++-mode . c++-ts-mode)
                               (cmake-mode . cmake-ts-mode)
+                              (python-mode . python-ts-mode)
   			                ))
 
     :init
@@ -310,6 +345,13 @@
         org-hide-emphasis-markers t))
 #+end_src
 
+*** Toc-Org
+#+begin_src  emacs-lisp
+  (use-package toc-org
+      :ensure t
+      :commands toc-org-enable
+      :init (add-hook 'org-mode-hook 'toc-org-enable))
+#+end_src
 ** Git
 
 #+begin_src emacs-lisp
@@ -388,6 +430,25 @@
         :init
         (which-key-mode 1))
 #+end_src
+*** Git
+
+#+begin_src emacs-lisp
+ (use-package diff-hl
+  :defer t
+  :ensure t
+  :hook
+  (find-file . (lambda ()
+                 (global-diff-hl-mode)           ;; Enable Diff-HL mode for all files.
+                 (diff-hl-flydiff-mode)          ;; Automatically refresh diffs.
+                 (diff-hl-margin-mode)))         ;; Show diff indicators in the margin.
+  :custom
+  (diff-hl-side 'left)                           ;; Set the side for diff indicators.
+  (diff-hl-margin-symbols-alist '((insert . "┃") ;; Customize symbols for each change type.
+                                  (delete . "-")
+                                  (change . "┃")
+                                  (unknown . "┆")
+                                  (ignored . "i"))))
+#+end_src
 ** Completions
 *** Vertico
 
@@ -437,7 +498,8 @@
 
   (use-package embark-consult
   :ensure t
-  :after (embark consult))
+  :after (embark consult)
+  :hook (embark-collect-mode . consult-preview-at-point-mode))
 #+end_src
 
 *** Corfu
@@ -480,13 +542,6 @@
       ;; (corfu-history-mode)
       (corfu-popupinfo-mode)
       )
-
-    (use-package nerd-icons-corfu
-    :ensure t
-    :after (:all corfu)
-    :init
-    (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
-
 
  #+end_src
 
@@ -579,11 +634,11 @@
   #+begin_src emacs-lisp
     (use-package lsp-mode
     :ensure t
-    :defer t
     :hook (;; Replace XXX-mode with concrete major mode (e.g. python-mode)
            (lsp-completion-mode . my/lsp-mode-setup-completion)
            (lsp-mode . lsp-enable-which-key-integration)
            (prog-mode . lsp-deferred)
+           (text-mode . lsp-deferred)
            ((beancount-mode c++-ts-mode cmake-ts-mode) . lsp-deferred))                   
     :commands (lsp lsp-deferred)
     :init
@@ -610,8 +665,8 @@
 
 
     (defun my/typos-activation-fn (filename major-mode)
-        (declare (ignore filename))  ; не используем
-        (derived-mode-p 'prog-mode))
+        (ignore filename)  ; не используем
+        (derived-mode-p '(prog-mode text-mode)))
 
     (lsp-register-client
      (make-lsp-client
@@ -728,22 +783,20 @@
 *** C++
 
 #+begin_src emacs-lisp
-  (use-package c++-ts-mode
-    :ensure nil
-    :hook
-    (c++-ts-mode . (lambda ()
-                     (setq lsp-clients-clangd-args '("-j=10"
-  	                                               "--background-index"
-  	                                               "--pch-storage=memory"
-  	                                               "--header-insertion=never"
-  	                                               "--fallback-style=llvm"
-  	                                               "--completion-style=detailed"
-  	                                               "--limit-results=50"
-  	                                               "--enable-config"
-  	                                               "--experimental-modules-support"
-                                                     "--clang-tidy"))))
-    )
-#+end_src
+    (add-hook 'c++-ts-mode-hook
+          (lambda ()
+            (setq lsp-clients-clangd-args
+                  '("-j=10"
+                    "--background-index"
+                    "--pch-storage=memory"
+                    "--header-insertion=never"
+                    "--fallback-style=llvm"
+                    "--completion-style=detailed"
+                    "--limit-results=50"
+                    "--enable-config"
+                    "--experimental-modules-support"
+                    "--clang-tidy"))))
+                    #+end_src
 
 *** Cmake
 
@@ -753,4 +806,28 @@
     (use-package cmake-ts-mode
       :ensure nil
       )
+#+end_src
+
+*** Markdown
+
+#+begin_src emacs-lisp
+(use-package markdown-mode
+  :defer t
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)            ;; Use gfm-mode for README.md files.
+  :init (setq markdown-command
+      (concat
+       "pandoc"
+       " --from=markdown --to=html"
+       " --standalone --mathjax --highlight-style=pygments"))) ;; Set the Markdown processing command.
+#+end_src
+
+*** Python
+#+begin_src emacs-lisp
+(use-package lsp-pyright
+  :ensure t
+  :custom (lsp-pyright-langserver-command "basedpyright") ;; or basedpyright
+  :hook (python-ts-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp-deferred))))  ; or lsp-deferred
 #+end_src
