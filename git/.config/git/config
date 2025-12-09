@@ -19,6 +19,7 @@
 
 [log]
     abbrevCommit = true
+    showSignature = true
     graphColors = blue,yellow,cyan,magenta,green,red
 
 [color "decorate"]

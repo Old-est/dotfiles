@@ -4,6 +4,10 @@
 //include "conf/workspaces.kdl"
 // Input
 
+debug {
+    wait-for-frame-completion-before-queueing
+}
+
 input {
     keyboard {
         xkb {
@@ -36,6 +40,14 @@ environment {
     QT_QPA_PLATFORM "wayland"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     QT_QPA_PLATFORMTHEME "gtk3"
+    ELM_DISPLAY "wl"
+    GDK_BACKEND "wayland,x11"
+    MOZ_ENABLE_WAYLAND "1"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    SDL_VIDEODRIVER "wayland"
+    CLUTTER_BACKEND "wayland"
+    LIBVA_DRIVER_NAME "nvidia"
+    __GLX_VENDOR_LIBRARY_NAME "nvidia"
 }
 
 output "eDP-1" {
@@ -137,11 +149,11 @@ window-rule {
 
 
 workspace "chat" {
-    open-on-output "eDP-1"
+    open-on-output "eDP-2"
 }
 
 workspace "work" {
-    open-on-output "eDP-1"
+    open-on-output "eDP-2"
 }
 
 // Application Startup

@@ -199,5 +199,8 @@ return {
             --   ignore_install = { 'org' },
             -- })
         end,
+    },
+    {
+        "figsoda/nix-develop.nvim"
     }
 }

@@ -2,8 +2,7 @@
 return {
 	cmd = {
 		"clangd",
-        "-j=10",
-		"--background-index",
+		"-j=10",
 		"--pch-storage=memory",
 		"--header-insertion=never",
 		"--fallback-style=llvm",
@@ -11,8 +10,25 @@ return {
 		"--limit-results=50",
 		"--enable-config",
 		"--experimental-modules-support",
-        "--clang-tidy"
 	},
 	filetypes = { "cpp", "h", "hpp", "cc", "c", "cppm" },
-	root_markers = { ".git", ".clangd", "compile-commands.json" },
+	root_markers = {
+		"CMakeLists.txt",
+		".clangd",
+		".clang-tidy",
+		".clang-format",
+		"compile_commands.json",
+		"compile_flags.txt",
+		"configure.ac",
+		".git",
+		vim.uv.cwd(),
+	},
+	capabilities = {
+		textDocument = {
+			completion = {
+				editsNearCursor = true,
+			},
+		},
+		offsetEncoding = { "utf-8", "utf-16" },
+	},
 }

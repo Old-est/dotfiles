@@ -28,7 +28,8 @@ return {
                 cmake = { "cmake_format" },
                 sh = { "shfmt" },
                 rust = { "rustfmt" },
-                beancount = {"bean-check"},
+                beancount = {"bean-format"},
+                nix = {"nixfmt"}
             },
         })
     end,

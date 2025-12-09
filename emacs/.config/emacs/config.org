@@ -22,6 +22,9 @@
     - [[#modeline][Modeline]]
     - [[#which-key][Which-Key]]
     - [[#git-1][Git]]
+    - [[#rainbow-delimiters][Rainbow Delimiters]]
+  - [[#editor][Editor]]
+    - [[#undo-tree][Undo Tree]]
   - [[#completions][Completions]]
     - [[#vertico][Vertico]]
     - [[#corfu][Corfu]]
@@ -226,9 +229,6 @@
       (treesit-install-language-grammar (car lang)))))
 #+end_src
 
-#+begin_src emacs-lisp
-  
-#+end_src
 ** Fonts
 
 #+begin_src emacs-lisp
@@ -267,13 +267,66 @@
   (use-package evil
       :ensure t
       :demand t
-      :init      ;; tweak evil's configuration before loading it
-      (setq evil-want-integration t  ;; This is optional since it's already set to t by default.
-            evil-want-keybinding nil
-            evil-vsplit-window-right t
-            evil-split-window-below t
-            evil-undo-system 'undo-redo)  ;; Adds vim-like C-r redo functionality
-      (evil-mode))
+      :init
+      (setq evil-want-integration t)      ;; Integrate `evil' with other Emacs features (optional as it's true by default).
+      (setq evil-want-keybinding nil)     ;; Disable default keybinding to set custom ones.
+      (setq evil-want-C-u-scroll t)       ;; Makes C-u scroll
+      (setq evil-want-C-u-delete t)       ;; Makes C-u delete on insert mode  ;; Adds vim-like C-r redo functionality
+      (evil-mode)
+      :config
+      ;; Set the leader key to space for easier access to custom commands. (setq evil-want-leader t)
+      (setq evil-leader/in-all-states t)  ;; Make the leader key available in all states.
+      (setq evil-want-fine-undo t)        ;; Evil uses finer grain undoing steps
+      
+      ;; Define the leader key as Space
+      (evil-set-leader 'normal (kbd "SPC"))
+      (evil-set-leader 'visual (kbd "SPC"))
+
+      ;; Keybindings for searching and finding files.
+      (evil-define-key 'normal 'global (kbd "<leader> s f") 'consult-fd)
+      (evil-define-key 'normal 'global (kbd "<leader> s g") 'consult-grep)
+      (evil-define-key 'normal 'global (kbd "<leader> s G") 'consult-git-grep)
+      (evil-define-key 'normal 'global (kbd "<leader> s r") 'consult-ripgrep)
+      (evil-define-key 'normal 'global (kbd "<leader> s h") 'consult-info)
+      (evil-define-key 'normal 'global (kbd "<leader> /") 'consult-line)
+
+      ;; Flymake navigation
+      (evil-define-key 'normal 'global (kbd "<leader> x x") 'consult-flymake);; Gives you something like `trouble.nvim'
+      (evil-define-key 'normal 'global (kbd "] d") 'flymake-goto-next-error) ;; Go to next Flymake error
+      (evil-define-key 'normal 'global (kbd "[ d") 'flymake-goto-prev-error) ;; Go to previous Flymake error
+
+      ;; Diff-HL navigation for version control
+      (evil-define-key 'normal 'global (kbd "] c") 'diff-hl-next-hunk) ;; Next diff hunk
+      (evil-define-key 'normal 'global (kbd "[ c") 'diff-hl-previous-hunk) ;; Previous diff hu
+
+      ;; Buffer management keybindings
+      (evil-define-key 'normal 'global (kbd "] b") 'switch-to-next-buffer) ;; Switch to next buffer
+      (evil-define-key 'normal 'global (kbd "[ b") 'switch-to-prev-buffer) ;; Switch to previous buffer
+      (evil-define-key 'normal 'global (kbd "<leader> b i") 'consult-buffer) ;; Open consult buffer list
+      (evil-define-key 'normal 'global (kbd "<leader> b b") 'ibuffer) ;; Open Ibuffer
+      (evil-define-key 'normal 'global (kbd "<leader> b d") 'kill-current-buffer) ;; Kill current buffer
+      (evil-define-key 'normal 'global (kbd "<leader> b k") 'kill-current-buffer) ;; Kill current buffer
+      (evil-define-key 'normal 'global (kbd "<leader> b x") 'kill-current-buffer) ;; Kill current buffer
+      (evil-define-key 'normal 'global (kbd "<leader> b s") 'save-buffer) ;; Save buffer
+      (evil-define-key 'normal 'global (kbd "<leader> b l") 'consult-buffer) ;; Consult buffer
+      (evil-define-key 'normal 'global (kbd "<leader>SPC") 'consult-buffer) ;; Consult buffer
+
+      ;; Undo tree visualization
+      (evil-define-key 'normal 'global (kbd "<leader> u") 'undo-tree-visualize)
+
+      ;; Commenting functionality for single and multiple lines
+      (evil-define-key 'normal 'global (kbd "gcc")
+        (lambda ()
+          (interactive)
+          (if (not (use-region-p))
+              (comment-or-uncomment-region (line-beginning-position) (line-end-position)))))
+      
+      (evil-define-key 'visual 'global (kbd "gc")
+        (lambda ()
+          (interactive)
+          (if (use-region-p)
+              (comment-or-uncomment-region (region-beginning) (region-end)))))
+      )
 
   (use-package evil-collection
     :ensure t
@@ -290,12 +343,8 @@
 
   ;; Using RETURN to follow links in Org/Evil 
   ;; Unmap keys in 'evil-maps if not done, (setq org-return-follows-link t) will not work
-  (with-eval-after-load 'evil-maps
-    (define-key evil-motion-state-map (kbd "SPC") nil)
-    (define-key evil-motion-state-map (kbd "RET") nil)
-    (define-key evil-motion-state-map (kbd "TAB") nil))
   ;; Setting RETURN key in org-mode to follow links
-    (setq org-return-follows-link  t)
+  (setq org-return-follows-link  t)
 
 #+end_src
 
@@ -448,6 +497,36 @@
                                   (change . "┃")
                                   (unknown . "┆")
                                   (ignored . "i"))))
+#+end_src
+*** Rainbow Delimiters
+#+begin_src emacs-lisp
+(use-package rainbow-delimiters
+  :defer t
+  :ensure t
+  :hook
+  (prog-mode . rainbow-delimiters-mode))
+#+end_src
+** Editor
+*** Undo Tree
+#+begin_src emacs-lisp
+  (use-package undo-tree
+    :defer t
+    :ensure t
+    :init
+    (setq undo-tree-visualizer-timestamps t
+          undo-tree-visualizer-diff t
+          ;; Increase undo limits to avoid losing history due to Emacs' garbage collection.
+          ;; These values can be adjusted based on your needs.
+          ;; 10X bump of the undo limits to avoid issues with premature
+          ;; Emacs GC which truncates the undo history very aggressively.
+          undo-limit 800000                     ;; Limit for undo entries.
+          undo-strong-limit 12000000            ;; Strong limit for undo entries.
+          undo-outer-limit 120000000)           ;; Outer limit for undo entries.
+    (global-undo-tree-mode)
+    :config
+    ;; Set the directory where `undo-tree' will save its history files.
+    ;; This keeps undo history across sessions, stored in a cache directory.
+    (setq undo-tree-history-directory-alist '(("." . "~/.config/emacs/.cache/undo"))))
 #+end_src
 ** Completions
 *** Vertico
