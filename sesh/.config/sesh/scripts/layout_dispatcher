@@ -7,10 +7,11 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+
 TARGET_PATH="$1"
 
 # Проверяем, есть ли сегмент 'cpp' в пути
-if echo "$TARGET_PATH" | grep -q "/cpp/" || echo "$TARGET_PATH" | grep -q "/rust/"; then
+if echo "$TARGET_PATH" | grep -q "/cpp/" || echo "$TARGET_PATH" | grep -q "/rust/" || echo "$TARGET_PATH" | grep -q "/lua/"; then
 
     # Запускаем скрипт для C++ (путь можно заменить на реальный)
     ~/.config/sesh/scripts/cpp_template
