@@ -1,7 +1,7 @@
 --- @type vim.lsp.Config
 return {
 	cmd = {
-		"/home/oldest/Stuff/clangd-linux-snapshot_20251123/clangd_snapshot_20251123/bin/clangd",
+		"/opt/clangd_21.1.8/bin/clangd",
 		"-j=10",
 		"--pch-storage=memory",
 		"--header-insertion=never",

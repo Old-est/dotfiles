@@ -32,7 +32,6 @@ return {
 		config = function(_, opts)
 			if opts.ensure_installed and #opts.ensure_installed > 0 then
 				require("nvim-treesitter").install(opts.ensure_installed)
-				-- register and start parsers for filetypes
 				for _, parser in ipairs(opts.ensure_installed) do
 					local filetypes = parser -- In this case, parser is the filetype/language name
 					vim.treesitter.language.register(parser, filetypes)
@@ -109,5 +108,5 @@ return {
 		---@module "nvim-treesitter-textobjects"
 		opts = { multiwindow = true },
 	},
-	
+
 }

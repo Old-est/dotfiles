@@ -1,0 +1,79 @@
+// Window rules
+window-rule {
+    match app-id="^mpv$"
+    tiled-state false
+}
+
+
+window-rule {
+    match app-id="spotify"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="emacs"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="^mpv$"
+    variable-refresh-rate true
+    default-column-width {}
+}
+
+window-rule {
+    match app-id=r#"^org\.telegram\.desktop$"#
+    geometry-corner-radius 6
+    open-on-workspace "chat"
+}
+
+window-rule {
+    match app-id="foot" title="sesh"
+    open-maximized true
+}
+window-rule {
+    match app-id="foot" title="yazi"
+    open-maximized true
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^org\.telegram\.desktop$"#
+    exclude title="^Media viewer$"
+
+    open-on-workspace "chat"
+}
+
+window-rule {
+    match app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
+    open-fullscreen false
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"Zoom Workplace$"#
+    open-floating true
+    open-maximized false
+    open-on-workspace "work"
+    open-focused true
+}
+
+window-rule {
+    match app-id=r#"^zen$"#
+    open-maximized true
+}
+
+window-rule {
+    match app-id="Slack"
+    open-maximized true
+    open-on-workspace "work"
+}
+
+
+
+workspace "chat" {
+    open-on-output "eDP-2"
+}
+
+workspace "work" {
+    open-on-output "eDP-2"
+}

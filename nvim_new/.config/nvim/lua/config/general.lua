@@ -35,6 +35,9 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 -- Misc
 opt.termguicolors = true
 vim.opt.swapfile = false
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Folding
 vim.opt.foldlevel = 99
+
+vim.g.python3_host_prog = vim.fn.expand("~/.venv/nvim/bin/python")

@@ -30,7 +30,7 @@ startup_command = "sesh connect (find . -maxdepth 1 -type d | gum filter --limit
 
 [[session]]
 name = "shape_reward pick worktree"
-path = "~/Work/shape_reward"
+path = "~/code/work/shape_reward/"
 startup_command = "sesh connect (find . -maxdepth 1 -type d | gum filter --limit 1 --fuzzy --no-sort --placeholder 'Pick a worktree' --prompt='🌲') && exit"
 
 [[session]]

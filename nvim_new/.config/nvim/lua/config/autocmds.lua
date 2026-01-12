@@ -24,6 +24,7 @@ local function should_have_cursorline()
 		"dashboard",
 		"snacks_dashboard",
 		"snacks_picker_input",
+        "lazy"
 	}
 
 	return not vim.tbl_contains(ignored_filetypes, vim.bo.filetype)
