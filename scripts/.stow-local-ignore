@@ -1,0 +1,18 @@
+# uv / pip / pipx
+^basedpyright$
+^ruff$
+^pre-commit$
+^fava$
+^jupyter.*
+^jlpm$
+
+# venv
+^bean-.*
+
+# system / package managers
+^paru$
+
+# safety net
+^node_modules/
+^__pycache__/
+

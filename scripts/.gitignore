@@ -1,0 +1,20 @@
+# package managers / installers
+basedpyright
+basedpyright-langserver
+ruff
+pre-commit
+fava
+jlpm
+jupyter-*
+paru
+
+# venv / tools
+bean-*
+beancount-language-server
+
+# general junk
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+

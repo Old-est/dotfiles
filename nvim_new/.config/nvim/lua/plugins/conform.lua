@@ -20,7 +20,7 @@ return {
 		-- Define your formatters
 		formatters_by_ft = {
 			lua = { "stylua" },
-			beancount = { lsp_format = "fallback" },
+			beancount = {"bean-format"},
             python = {"ruff_format"}
 		},
 		-- Set default options
