@@ -3,7 +3,7 @@ return {
 	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
 		"xzbdmw/colorful-menu.nvim",
-		"onsails/lspkind.nvim",
+		{ "onsails/lspkind.nvim" },
 		{
 			"L3MON4D3/LuaSnip",
 			dependencies = { "rafamadriz/friendly-snippets" },
@@ -35,7 +35,8 @@ return {
 		completion = {
 			menu = {
 				draw = {
-					columns = { { "kind_icon" }, { "label", gap = 1 } },
+					-- columns = { { "kind_icon" }, { "label", gap = 1 } },
+					columns = { { "label", "label_description", gap = 1 }, { "kind_icon", gap = 1, "kind" } },
 					components = {
 						label = {
 							text = function(ctx)
@@ -55,9 +56,7 @@ return {
 										icon = dev_icon
 									end
 								else
-									icon = require("lspkind").symbolic(ctx.kind, {
-										mode = "symbol",
-									})
+									icon = require("lspkind").symbol_map[ctx.kind] or ""
 								end
 
 								return icon .. ctx.icon_gap

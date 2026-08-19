@@ -2,6 +2,6 @@
 // List of processes that should be run on startup
 
 // spawn-at-startup "easyeffects" "--service-mode"
-spawn-at-startup "swaybg" "--image" "/home/oldest/.config/wallpapers/kanagawa.jpg"
+spawn-at-startup "swaybg" "--image" "/home/oldest/.wallpapers/kanagawa.jpg"
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-at-startup "/usr/bin/gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh,gpg"

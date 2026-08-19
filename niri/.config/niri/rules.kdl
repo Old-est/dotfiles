@@ -63,7 +63,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="Slack"
+    match app-id="slack"
     open-maximized true
     open-on-workspace "work"
 }

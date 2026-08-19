@@ -25,3 +25,6 @@ starship init fish | source
 zoxide init fish | source
 batman --export-env | source
 
+
+# opencode
+fish_add_path /home/oldest/.opencode/bin

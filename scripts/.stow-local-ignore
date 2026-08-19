@@ -5,6 +5,8 @@
 ^fava$
 ^jupyter.*
 ^jlpm$
+^gf2
+^taplo
 
 # venv
 ^bean-.*

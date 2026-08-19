@@ -1,7 +1,7 @@
 --- @type vim.lsp.Config
 return {
 	cmd = {
-		"/opt/clangd_21.1.8/bin/clangd",
+		"clangd",
 		"-j=10",
 		"--pch-storage=memory",
 		"--header-insertion=never",
@@ -11,7 +11,7 @@ return {
 		"--enable-config",
 		"--experimental-modules-support",
 	},
-	filetypes = { "cpp", "h", "hpp", "cc", "c", "cppm" },
+	filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 	root_markers = {
 		"CMakeLists.txt",
 		".clangd",

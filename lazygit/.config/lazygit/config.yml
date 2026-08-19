@@ -1,10 +1,8 @@
 git:
+  diffRenderers:
+    - command: delta --dark --paging=never
   autoFetch: false
   overrideGpg: true
-  pagers:
-    - colorArg: always
-      pager: delta --dark --paging=never --true-color=always
-      useExternalDiffGitConfig: true
 customCommands:
   - key: "C"
     command: |

@@ -213,3 +213,5 @@ animations {
     // slowdown 3.0
 }
 
+
+include "dms/cursor.kdl"

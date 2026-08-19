@@ -5,6 +5,7 @@ return {
 	config = function()
 		require("lint").linters_by_ft = {
 			-- cpp = { "clangtidy" },
+			python = { "ruff" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

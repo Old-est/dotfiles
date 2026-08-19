@@ -14,7 +14,7 @@ SETUVAR _fisher_lilyball_2F_nix_2D_env_2E_fish_files:\x7e/\x2econfig/fish/conf\x
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejorgebucaran/nvm\x2efish\x1ekidonng/nix\x2efish\x1elilyball/nix\x2denv\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_greeting:\x1d
-SETUVAR fish_user_paths:/home/oldest/\x2ego\x1e/home/oldest/\x2econfig/emacs/bin\x1e/home/oldest/\x2elocal/bin\x1e/home/oldest/\x2etmuxifier/bin
+SETUVAR fish_user_paths:/home/oldest/\x2eopencode/bin\x1e/home/oldest/\x2ego\x1e/home/oldest/\x2econfig/emacs/bin\x1e/home/oldest/\x2elocal/bin\x1e/home/oldest/\x2etmuxifier/bin
 SETUVAR nvm_default_version:v24\x2e9\x2e0
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_check_for_new_release:false

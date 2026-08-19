@@ -13,27 +13,27 @@ return {
 		notifier = { enabled = true },
 	},
 	keys = {
-		{
-			"<leader>ff",
-			function()
-				Snacks.picker.files()
-			end,
-			desc = "Find [F]iles",
-		},
-		{
-			"<leader>fr",
-			function()
-				Snacks.picker.recent()
-			end,
-			desc = "[R]ecent",
-		},
-		{
-			"<leader>fg",
-			function()
-				Snacks.picker.git_files()
-			end,
-			desc = "Find [G]it Files",
-		},
+		-- {
+		-- 	"<leader>ff",
+		-- 	function()
+		-- 		Snacks.picker.files()
+		-- 	end,
+		-- 	desc = "Find [F]iles",
+		-- },
+		-- {
+		-- 	"<leader>fr",
+		-- 	function()
+		-- 		Snacks.picker.recent()
+		-- 	end,
+		-- 	desc = "[R]ecent",
+		-- },
+		-- {
+		-- 	"<leader>fg",
+		-- 	function()
+		-- 		Snacks.picker.git_files()
+		-- 	end,
+		-- 	desc = "Find [G]it Files",
+		-- },
 		{
 			"<leader>fb",
 			function()
@@ -60,13 +60,13 @@ return {
 			end,
 			desc = "[Q]uickfix List",
 		},
-		{
-			"<leader>sg",
-			function()
-				Snacks.picker.grep()
-			end,
-			desc = "[G]rep",
-		},
+		-- {
+		-- 	"<leader>sg",
+		-- 	function()
+		-- 		Snacks.picker.grep()
+		-- 	end,
+		-- 	desc = "[G]rep",
+		-- },
 		{
 			"<leader>sb",
 			function()
@@ -74,14 +74,14 @@ return {
 			end,
 			desc = "[B]uffer lines",
 		},
-		{
-			"<leader>sw",
-			function()
-				Snacks.picker.grep_word()
-			end,
-			desc = "Visual selection or [W]ord",
-			mode = { "n", "x" },
-		},
+		-- {
+		-- 	"<leader>sw",
+		-- 	function()
+		-- 		Snacks.picker.grep_word()
+		-- 	end,
+		-- 	desc = "Visual selection or [W]ord",
+		-- 	mode = { "n", "x" },
+		-- },
 		{
 			"<leader>sh",
 			function()

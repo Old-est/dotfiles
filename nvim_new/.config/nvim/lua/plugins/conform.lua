@@ -20,8 +20,11 @@ return {
 		-- Define your formatters
 		formatters_by_ft = {
 			lua = { "stylua" },
-			beancount = {"bean-format"},
-            python = {"ruff_format"}
+			beancount = { "bean-format" },
+			python = { "ruff_format", "ruff_organize_imports", "ruff_fix" },
+			yaml = { "prettier" },
+			json = { "prettier" },
+			cmake = { "gersemi" },
 		},
 		-- Set default options
 		default_format_opts = {
